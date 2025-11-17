@@ -1,6 +1,5 @@
 # React_Laravel_CRUD
->>>>>>> 003fd869db9334b8b1a8e9aef9345ac2abeaa308
-=======
+
 # React Laravel CRUD Application
 
 A full-stack Employee Management System built with Laravel (backend) and React (frontend).
@@ -168,13 +167,7 @@ React_laravel_crud/
 - Check that Laravel backend is running on port 8000
 - Ensure proxy is set in React package.json
 
-## License
-
-This project is open-source and available for educational purposes.
-
-## Author
+## Author (Thasneem....)
 
 Created as a demonstration of full-stack CRUD operations with Laravel and React.
-=======
-# React_Laravel_CRUD
->>>>>>> 003fd869db9334b8b1a8e9aef9345ac2abeaa308
+
