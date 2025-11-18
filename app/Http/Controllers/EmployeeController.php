@@ -12,12 +12,29 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     /**
-     * Display a list of all employees
-     * GET /api/employees
-     * Returns: JSON array of all employees
+     * Display a list of all employees with pagination and search
+     * GET /api/employees?page=1&limit=10&search=keyword
+     * Returns: Paginated JSON response with employee data
      */
-    public function index() {
-        return Employee::all();
+    public function index(Request $request) {
+        $limit = $request->input('limit', 10); // Items per page (default 10)
+        $search = $request->input('search', ''); // Search term
+        
+        // Build query with search filter
+        $query = Employee::query();
+        
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('id', 'LIKE', "%{$search}%")
+                  ->orWhere('first_name', 'LIKE', "%{$search}%")
+                  ->orWhere('last_name', 'LIKE', "%{$search}%")
+                  ->orWhere('gender', 'LIKE', "%{$search}%")
+                  ->orWhere('age', 'LIKE', "%{$search}%");
+            });
+        }
+        
+        // Return paginated results
+        return $query->paginate($limit);
     }
 
     /**
